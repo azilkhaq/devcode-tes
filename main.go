@@ -27,7 +27,7 @@ func main() {
 	router.HandleFunc("/activity-groups/{id}", controllers.C_UpdateActivity).Methods("PATCH")
 	router.HandleFunc("/activity-groups/{id}", controllers.C_DeleteActivity).Methods("DELETE")
 
-	// Todo
+	// Todo 
 	router.HandleFunc("/todo-items", controllers.C_CreateTodo).Methods("POST")
 	router.HandleFunc("/todo-items", controllers.C_GetAllTodo).Methods("GET")
 	router.HandleFunc("/todo-items/{id}", controllers.C_GetOneTodo).Methods("GET")
