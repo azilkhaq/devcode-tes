@@ -56,7 +56,7 @@ func C_GetAllActivity(w http.ResponseWriter, r *http.Request) {
 
 	resp := helpers.Message("Success", "Success")
 	resp["data"] = result
-	helpers.Response(w, http.StatusCreated, resp)
+	helpers.Response(w, http.StatusOK, resp)
 }
 
 func C_GetOneActivity(w http.ResponseWriter, r *http.Request) {

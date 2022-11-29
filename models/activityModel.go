@@ -14,18 +14,18 @@ func (data *Activity) Validate(action string) error {
 	switch strings.ToLower(action) {
 	case "create":
 		if data.Email == "" {
-			return errors.New("Email cannot be null")
+			return errors.New("email cannot be null")
 		}
 		if data.Title == "" {
-			return errors.New("Title cannot be null")
+			return errors.New("title cannot be null")
 		}
 		return nil
 	default:
 		if data.Email == "" {
-			return errors.New("Email cannot be null")
+			return errors.New("email cannot be null")
 		}
 		if data.Title == "" {
-			return errors.New("Title cannot be null")
+			return errors.New("title cannot be null")
 		}
 		return nil
 	}
@@ -47,7 +47,7 @@ func M_GetAllActivity() (*[]Activity, error) {
 
 	data := []Activity{}
 	
-	err := db.Find(&data).Error
+	err := db.Debug().Find(&data).Error
 
 	if err != nil {
 		fmt.Println(err.Error())
@@ -61,7 +61,7 @@ func M_GetOneActivity(activityId string) (*Activity, error) {
 
 	data := Activity{}
 	
-	err := db.Where("id = ?", activityId).Find(&data).Error
+	err := db.Debug().Where("id = ?", activityId).Find(&data).Error
 
 	if err != nil {
 		return nil, err
@@ -72,7 +72,7 @@ func M_GetOneActivity(activityId string) (*Activity, error) {
 
 func (data *Activity) M_UpdateActivity(activityId string) (*Activity, error) {
 
-	err := db.Debug().Model(Activity{}).Where("id = ?", activityId).Update(&data).Error
+	err := db.Debug().Exec("UPDATE activities SET email = ?, title = ? WHERE id = ?", data.Email, data.Title, activityId).Error
 	if err != nil {
 		return nil, err
 	}

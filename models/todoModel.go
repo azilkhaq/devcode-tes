@@ -86,7 +86,7 @@ func M_GetOneTodo(todoId string) (*Todo, error) {
 
 	data := Todo{}
 
-	err := db.Where("id = ?", todoId).Find(&data).Error
+	err := db.Debug().Where("id = ?", todoId).Find(&data).Error
 
 	if err != nil {
 		return nil, err
@@ -102,7 +102,7 @@ func (data *Todo) M_UpdateTodo(todoId string) (*Todo, error) {
 		return nil, err
 	}
 
-	err = db.Where("id = ?", todoId).Find(&data).Error
+	err = db.Debug().Where("id = ?", todoId).Find(&data).Error
 	if err != nil {
 		return nil, err
 	}
