@@ -5,9 +5,10 @@ import (
 	"devcode/models"
 
 	"encoding/json"
-	"github.com/gorilla/mux"
-	"net/http"
+    "net/http"
 	"strings"
+
+	"github.com/gorilla/mux"
 )
 
 func C_CreateTodo(w http.ResponseWriter, r *http.Request) {
@@ -58,7 +59,7 @@ func C_GetAllTodo(w http.ResponseWriter, r *http.Request) {
 
 	resp := helpers.Message("Success", "Success")
 	resp["data"] = result
-	helpers.Response(w, http.StatusCreated, resp)
+	helpers.Response(w, http.StatusOK, resp)
 }
 
 func C_GetOneTodo(w http.ResponseWriter, r *http.Request) {

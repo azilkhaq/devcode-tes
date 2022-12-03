@@ -10,6 +10,7 @@ import (
 	"strings"
 )
 
+
 func C_CreateActivity(w http.ResponseWriter, r *http.Request) {
 
 	data := &models.Activity{}
